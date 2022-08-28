@@ -1,0 +1,90 @@
+#%RAML 1.0
+title: EMPLOYEE API
+version: v1
+baseUri: http://localhost:8081
+
+/CreateAccount:
+  post:
+    description: This API is to create an Account
+    body:
+      application/json:
+        example:
+          {
+            "name":"JASHU",
+         "emailId":"JASHU@yahoo.com",
+         "phoneNo":"1234567892",
+         "gender":"male"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                 "message":"Account Created Successfully"
+              }
+       
+ 
+                          
+/AccountDetails:
+  get:
+    description: This API is get Employee details
+    queryParameters:
+      accountId:
+        type: integer        
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "accountId": 4,
+        "dateOfBirth": "01-Feb-22",
+        "gender": "Male",
+        "phone": "9000000002",
+        "name": "ABC",
+        "email": "ABC@gmail.com"
+              }
+    
+
+/DeleteAccount:
+  delete:
+    description: This API is to delete the Employee Account
+    queryParameters:
+      accountId:
+        type: integer
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+             {
+              "message": "Employee details are successfully deleted"
+              }
+
+
+
+/UpdateAccount:
+  patch:
+   description: This API is to update the details partially
+   body:
+      application/json:
+        example:
+          {
+            "accountId":102,
+            "phoneNo":"9000000001"
+          }
+        
+   responses:
+     200:
+      body:
+        application/json:
+          example:
+            {
+              "message":"Employee details are updated successfully"
+            }
+     
+        
+
